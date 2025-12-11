@@ -1,0 +1,78 @@
+package com.qmeetx.authservice.application.signupService;
+
+import com.qmeetx.authservice.api.dto.SignupRequestDTO;
+import com.qmeetx.authservice.application.KafkaService.KafkaProducerService;
+import com.qmeetx.authservice.application.mapper.UserMapper;
+
+import com.qmeetx.authservice.domain.enums.AuthProvider;
+import com.qmeetx.authservice.domain.enums.UserRole;
+import com.qmeetx.authservice.domain.models.Provider;
+import com.qmeetx.authservice.domain.models.User;
+
+import com.qmeetx.authservice.domain.repository.ProviderRepository;
+import com.qmeetx.authservice.domain.repository.UserRepository;
+import com.qmeetx.authservice.exceptions.EmailAlreadyExistException;
+import jakarta.transaction.Transactional;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+
+@Service
+
+public class SignupServiceImp implements SignupService {
+
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
+    private final KafkaProducerService  kafkaProducerService;
+    public SignupServiceImp(UserRepository userRepository, ProviderRepository providerRepository, PasswordEncoder passwordEncoder, KafkaProducerService kafkaProducerService) {
+        this.userRepository = userRepository;
+        
+        this.passwordEncoder = passwordEncoder;
+
+        this.kafkaProducerService = kafkaProducerService;
+    }
+/*
+
+@Override
+public String createTenantId(String organizationName){
+
+
+        for(int i=0;i<10;i++){
+            String tenantId= TenantIdGenerator.generateTenantId(organizationName);
+           if(!organizationRepository.existsByTenantId(tenantId))
+               return tenantId;
+        }
+throw new  RuntimeException("Something went wrong, Error in Generating TenantId..");
+}
+*/
+
+    @Override
+    @Transactional
+    @Async
+    public void signup(SignupRequestDTO signupRequestDTO) {
+if(userRepository.existsByEmail(signupRequestDTO.getEmail())) {
+    throw new EmailAlreadyExistException("Email Already Exist");
+}
+
+User user= UserMapper.maptoUser(signupRequestDTO);
+
+user.setPassword(passwordEncoder.encode(user.getPassword()));
+user.setRole(UserRole.OWNER);
+        Provider provider=new Provider();
+        provider.setUser(user);
+        provider.setProviderName(AuthProvider.LOCAL);
+        provider.setProviderUserId(user.getEmail());
+        user.getProviders().add(provider);
+
+
+
+
+        userRepository.save(user);
+
+        kafkaProducerService.sendOTPEvent(user.getName(),user.getEmail());
+
+    }
+
+}

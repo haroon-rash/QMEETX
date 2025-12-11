@@ -1,0 +1,17 @@
+syntax="proto3";
+
+package userCreation.events;
+
+option java_multiple_files=true;
+
+message UserCreation{
+
+   string authId=1;
+   string name=2;
+   string email=3;
+   string role=4;
+
+   bool isVerified=5;
+   string source=6;
+
+}
