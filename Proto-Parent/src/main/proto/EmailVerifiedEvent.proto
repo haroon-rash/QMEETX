@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package otp.event;
+
+option java_multiple_files=true;
+
+
+message EmailVerifiedEvent{
+
+
+  string email=1;
+  bool isVerified=2;
+
+}
