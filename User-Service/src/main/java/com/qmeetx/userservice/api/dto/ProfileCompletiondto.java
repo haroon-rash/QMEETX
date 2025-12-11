@@ -20,7 +20,7 @@ public class ProfileCompletiondto {
     private String country;
     @NotBlank(message = "Date of Birth  is Required!")
     private LocalDate dob;
-    @NotBlank(message = "Gender is Required!")
+    @NotBlank(message = "Gender  is Required! ")
     private String gender;
 
 
