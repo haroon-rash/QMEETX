@@ -2,10 +2,12 @@ package com.qmeetx.userservice.api.dto;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class UserCreationdto {
 
-    private   String authId;
+    private String authId;
     private String username;
     private String email;
     private String role;

@@ -1,11 +1,9 @@
 package com.qmeetx.userservice.domain.model;
+import com.qmeetx.userservice.domain.Enums.ProfileStatus;
 import com.qmeetx.userservice.domain.Enums.Source;
 import com.qmeetx.userservice.domain.Enums.UserRoles;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -31,7 +29,7 @@ private UUID id;
     private String name;
 
      @Column(name="auth_id",nullable = false)
-     private String authId;
+     private UUID authId;
 
 
     @Column(name="user_email",unique = true,nullable = false)
@@ -50,23 +48,20 @@ private UUID id;
     private UserRoles Role;
     @Column(name = "source")
     @Enumerated(EnumType.STRING)
-    private Source Source  ;
+    private Source Source;
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
 
 
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "profile_completed")
-    private Boolean profileCompleted = false;
+    private ProfileStatus profileStatus = ProfileStatus.INCOMPLETE;
 
     @Column(name = "phone_no")
     private String phone;
 
-    private String address;
-    private String city;
-    private String postalCode;
-    private String country;
+
     @Column(name = "date_of_birth")
     private LocalDate dob;
     private String gender;
