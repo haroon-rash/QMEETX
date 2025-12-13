@@ -1,6 +1,7 @@
 package com.qmeetx.authservice.application.loginService;
 
 import com.qmeetx.authservice.api.dto.LoginRequestDTO;
+import com.qmeetx.authservice.domain.enums.UserRole;
 import com.qmeetx.authservice.domain.models.User;
 import com.qmeetx.authservice.domain.repository.UserRepository;
 import com.qmeetx.authservice.exceptions.PasswordNotMatchException;
@@ -10,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class LoginServiceImp implements LoginService {
 
@@ -36,7 +39,7 @@ private final PasswordEncoder passwordEncoder;
      }
 
 
-     return jwtTokenProvider.generateToken(user.getEmail(),user.getName(),user.isVarified(),"admin");
+     return jwtTokenProvider.generateToken(user.getId().toString(),user.getEmail(),user.getName(),user.isVarified(), UserRole.OWNER.name());
 
 
     }
