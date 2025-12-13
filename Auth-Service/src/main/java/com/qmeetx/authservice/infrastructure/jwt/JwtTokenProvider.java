@@ -12,6 +12,8 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.Map;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Component
 @Slf4j
 public class JwtTokenProvider {
@@ -35,16 +37,19 @@ public class JwtTokenProvider {
     }
 
     //  Generate JWT
-    public String generateToken(String email, String name, boolean isVerified, String role) {
+    public String generateToken(String id,String email, String name, boolean isVerified, String role) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expirationTime);
 
         return Jwts.builder()
                 .setSubject(email)
                 .addClaims(Map.of(
+                        "sub",id,
                         "name", name,
+                        "email", email,
                         "isVerified", isVerified,
                         "role", role
+
                 ))
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
