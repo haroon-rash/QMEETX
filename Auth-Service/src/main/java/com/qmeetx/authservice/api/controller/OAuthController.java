@@ -32,6 +32,7 @@ private final JwtTokenProvider  jwtTokenProvider;
     }
     try {
         String token = jwtTokenProvider.generateToken(
+              user.getId().toString(),
                 user.getEmail(),
                 user.getName(),
                 user.isVarified(),
