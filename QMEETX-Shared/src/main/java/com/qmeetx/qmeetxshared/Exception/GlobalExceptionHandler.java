@@ -32,6 +32,21 @@ public class GlobalExceptionHandler {
     }
 
 
+
+
+//to catch database-related constraint errors at runtime
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<?> handleDataIntegrityViolationException(DataIntegrityViolationException ex, HttpServletRequest request) {
+        Map<String,Object> error = Map.of(
+                "timestamp", LocalDateTime.now(),
+                "status", HttpStatus.CONFLICT.value(),
+                "error", "Conflict",
+                "message", "Email or provider already exists",
+                "path", request.getRequestURI()
+        );
+        log.error("Data integrity violation: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
     //Handle all Other Exceptions
 
     @ExceptionHandler(Exception.class)
@@ -47,18 +62,5 @@ public class GlobalExceptionHandler {
         return ResponseEntity.internalServerError().body(errors);
     }
 
-//to catch database-related constraint errors at runtime
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<?> handleDataIntegrityViolationException(DataIntegrityViolationException ex, HttpServletRequest request) {
-        Map<String,Object> error = Map.of(
-                "timestamp", LocalDateTime.now(),
-                "status", HttpStatus.CONFLICT.value(),
-                "error", "Conflict",
-                "message", "Email or provider already exists",
-                "path", request.getRequestURI()
-        );
-        log.error("Data integrity violation: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
-    }
 
     }
