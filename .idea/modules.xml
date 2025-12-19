@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Auth-Service/Auth-Service.iml" filepath="$PROJECT_DIR$/Auth-Service/Auth-Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/Proto-Parent/Proto-Parent.iml" filepath="$PROJECT_DIR$/Proto-Parent/Proto-Parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/QMEETX.iml" filepath="$PROJECT_DIR$/.idea/QMEETX.iml" />
     </modules>
   </component>
 </project>
