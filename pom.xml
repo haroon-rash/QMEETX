@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                        https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+           http://maven.apache.org/POM/4.0.0
+           https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,95 +12,111 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <!-- Inherit Spring Boot starter parent for versions and plugin management -->
+    <!-- Spring Boot Parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.5</version>
-        <relativePath/> <!-- prevent searching local -->
+        <relativePath/>
     </parent>
+
+    <!-- Centralized Properties -->
+    <properties>
+        <java.version>17</java.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
+        <kafka.version>3.6.0</kafka.version>
+        <reactor-kafka.version>1.3.23</reactor-kafka.version>
+        <protobuf.version>3.25.5</protobuf.version>
+        <grpc.version>1.68.1</grpc.version>
+        <jjwt.version>0.11.5</jjwt.version>
+    </properties>
+
+    <!-- Repositories -->
     <repositories>
-
-
-
-
-
-        <!-- Confluent Maven repo -->
-        <repository>
-            <id>confluent</id>
-            <url>https://packages.confluent.io/maven/</url>
-        </repository>
-
-        <!-- Explicitly add Maven Central (sometimes IntelliJ misses it if overridden) -->
         <repository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
         </repository>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
     </repositories>
 
+    <!-- Dependency Management (VERSIONS ONLY) -->
     <dependencyManagement>
         <dependencies>
-            <!-- Define additional versions outside Spring Boot control -->
+
+            <!-- Spring Cloud BOM -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Kafka -->
             <dependency>
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-clients</artifactId>
-                <version>3.6.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.protobuf</groupId>
-                <artifactId>protobuf-java</artifactId>
-                <version>3.25.5</version>  <!-- Stable, widely used -->
+                <version>${kafka.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>io.projectreactor.kafka</groupId>
                 <artifactId>reactor-kafka</artifactId>
-                <version>1.3.23</version> <!-- Use latest stable -->
+                <version>${reactor-kafka.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>io.confluent</groupId>
                 <artifactId>kafka-protobuf-serializer</artifactId>
-                <version>7.7.0</version> <!-- or 7.7.0 if your repo resolves -->
+                <version>7.7.0</version>
             </dependency>
 
-
+            <!-- Protobuf / gRPC -->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-netty-shaded</artifactId>
-                <version>1.68.1</version>
+                <version>${grpc.version}</version>
             </dependency>
 
-
+            <!-- JWT -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
-                <version>0.11.5</version>
+                <version>${jjwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-impl</artifactId>
-                <version>0.11.5</version>
+                <version>${jjwt.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-jackson</artifactId>
-                <version>0.11.5</version>
+                <version>${jjwt.version}</version>
                 <scope>runtime</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
+    <!-- Modules -->
     <modules>
         <module>QMEETX-Shared</module>
         <module>Proto-Parent</module>
         <module>Auth-Service</module>
-
         <module>OTP-Service</module>
         <module>User-Service</module>
     </modules>
-
 
 </project>
