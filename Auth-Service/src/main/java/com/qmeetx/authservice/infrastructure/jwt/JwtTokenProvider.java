@@ -42,9 +42,9 @@ public class JwtTokenProvider {
         Date expiryDate = new Date(now.getTime() + expirationTime);
 
         return Jwts.builder()
-                .setSubject(email)
+                .setSubject(id)
                 .addClaims(Map.of(
-                        "sub",id,
+
                         "name", name,
                         "email", email,
                         "isVerified", isVerified,
