@@ -139,10 +139,9 @@ java -jar target/auth-service.jar
 
 ---
 
-## License
-MIT License. See [LICENSE](LICENSE) file for details.
+
 
 ---
 
 ## Contact
-For queries or suggestions, reach out at `your-email@example.com`.
+For queries or suggestions, reach out at `haroonurrasheed1212@gmail.com`.
