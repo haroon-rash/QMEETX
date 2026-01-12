@@ -1,4 +1,4 @@
-package com.qmeetx.authservice.infrastructure.config;
+package com.qmeetx.authenticationservice.infrastructure.config;
 
 
 import org.apache.kafka.clients.producer.ProducerConfig;

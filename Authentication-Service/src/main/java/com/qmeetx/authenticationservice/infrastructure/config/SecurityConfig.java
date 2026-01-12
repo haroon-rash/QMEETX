@@ -1,8 +1,7 @@
-package com.qmeetx.authservice.infrastructure.config;
+package com.qmeetx.authenticationservice.infrastructure.config;
 
-
-import com.qmeetx.authservice.application.oauth.Google.CustomOAuth2UserService;
-import com.qmeetx.authservice.application.oauth.Google.OAuthUserServiceImp;
+import com.qmeetx.authenticationservice.application.oauth.Google.CustomOAuth2UserService;
+import com.qmeetx.authenticationservice.application.oauth.Google.OAuthUserServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

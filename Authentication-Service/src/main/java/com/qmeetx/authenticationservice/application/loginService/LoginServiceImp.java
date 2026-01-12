@@ -1,23 +1,21 @@
-package com.qmeetx.authservice.application.loginService;
+package com.qmeetx.authenticationservice.application.loginService;
 
-import com.qmeetx.authservice.api.dto.LoginRequestDTO;
-import com.qmeetx.authservice.domain.enums.UserRole;
-import com.qmeetx.authservice.domain.models.User;
-import com.qmeetx.authservice.domain.repository.UserRepository;
-import com.qmeetx.authservice.exceptions.PasswordNotMatchException;
-import com.qmeetx.authservice.exceptions.UserNotFoundException;
-import com.qmeetx.authservice.infrastructure.jwt.JwtTokenProvider;
+
+import com.qmeetx.authenticationservice.api.dto.LoginRequestDTO;
+import com.qmeetx.authenticationservice.domain.enums.UserRole;
+import com.qmeetx.authenticationservice.domain.models.User;
+import com.qmeetx.authenticationservice.domain.repository.UserRepository;
+import com.qmeetx.authenticationservice.exceptions.PasswordNotMatchException;
+import com.qmeetx.authenticationservice.exceptions.UserNotFoundException;
+import com.qmeetx.authenticationservice.infrastructure.jwt.JwtTokenProvider;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class LoginServiceImp implements LoginService {
 
-    private final JwtTokenProvider  jwtTokenProvider;
-    private final UserRepository  userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
 private final PasswordEncoder passwordEncoder;
     public LoginServiceImp(JwtTokenProvider jwtTokenProvider, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.jwtTokenProvider = jwtTokenProvider;
@@ -39,7 +37,7 @@ private final PasswordEncoder passwordEncoder;
      }
 
 
-     return jwtTokenProvider.generateToken(user.getId().toString(),user.getEmail(),user.getName(),user.isVarified(), UserRole.OWNER.name());
+     return jwtTokenProvider.generateToken(user.getId().toString(),user.getEmail(),user.isVarified(), UserRole.OWNER.name());
 
 
     }

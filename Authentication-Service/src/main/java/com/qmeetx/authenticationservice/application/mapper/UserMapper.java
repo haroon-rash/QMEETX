@@ -1,9 +1,9 @@
-package com.qmeetx.authservice.application.mapper;
+package com.qmeetx.authenticationservice.application.mapper;
 
 
-import com.qmeetx.authservice.api.dto.SignupRequestDTO;
+import com.qmeetx.authenticationservice.api.dto.SignupRequestDTO;
+import com.qmeetx.authenticationservice.domain.models.User;
 
-import com.qmeetx.authservice.domain.models.User;
 
 public class UserMapper {
     public static User maptoUser(SignupRequestDTO signupRequestDTO) {
