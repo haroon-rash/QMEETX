@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.function.Consumer;
+@Transactional
 @Service
 public class UserProfileComplete implements UserProfileCompletionService {
 
@@ -22,24 +24,43 @@ public class UserProfileComplete implements UserProfileCompletionService {
     @Override
     public void profileCompletion(UUID authId, ProfileCompletiondto profileCompletiondto) {
 
-        User user = userRepository.findByAuthId(authId)
-                .orElseThrow(() -> new UserNotFoundException(
-                        "User not found with authId: " + authId));
+    User user = userRepository.findByAuthId(authId)
+            .orElseThrow(() -> new UserNotFoundException(
+                    "User not found with authId: " + authId));
 
-        if(user.getProfileStatus()==ProfileStatus.COMPLETE){
-            throw  new IllegalStateException("User profile has been completed");
-        }
-user.setPhone(profileCompletiondto.getPhone());
-user.setDob(profileCompletiondto.getDob());
-user.setGender(profileCompletiondto.getGender());
+     
+    updateIfNotBlank(profileCompletiondto.getPhone(), user::setPhone);
+    updateIfNotBlank(profileCompletiondto.getName(), user::setName);
+    updateIfNotBlank(profileCompletiondto.getGender(), user::setGender);
 
+    updateIfNotNull(profileCompletiondto.getDob(), user::setDob);
+
+    userRepository.save(user);
 //As Profile is complete
-user.setProfileStatus(ProfileStatus.COMPLETE);
-userRepository.save(user);
+    if(user.getEmail()!=null&&user.getPhone()!=null&&user.getDob()!=null&&user.getGender()!=null&&user.getName()!=null) {
 
-
-
-
+        user.setProfileStatus(ProfileStatus.COMPLETE);
+        userRepository.save(user);
+    }
 
     }
+
+     // Use for String to check update is not blank and null
+    private void updateIfNotBlank(String value , Consumer<String> setter)
+    {
+
+        if(value!=null&&!value.isBlank()){
+            setter.accept(value);
+        }
+    }
+
+    // Use for Objects   (Not Null) such as LocalDate Enums or any Objects
+
+    private <T> void updateIfNotNull(T value ,Consumer<T> setter)
+    {
+        if(value!=null){
+            setter.accept(value);
+        }
+    }
+
 }

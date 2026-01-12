@@ -26,11 +26,11 @@ public class KafkaUserConsumerServiceImp implements KafkaUserConsumerService {
     )
 
 
-    public User consumeUserCreationEvent(UserCreationdto userCreationdto) {
+    public void consumeUserCreationEvent(UserCreationdto userCreationdto) {
 
          User user = userCreationMapper.maptoUser(userCreationdto);
         userRepository.save(user);
-        return user;
+
 
 
 
