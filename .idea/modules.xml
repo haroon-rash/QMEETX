@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Auth-Service/Auth-Service.iml" filepath="$PROJECT_DIR$/Auth-Service/Auth-Service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Proto-Parent/Proto-Parent.iml" filepath="$PROJECT_DIR$/Proto-Parent/Proto-Parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/QMEETX.iml" filepath="$PROJECT_DIR$/.idea/QMEETX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OTP-Service/OTP-Service.iml" filepath="$PROJECT_DIR$/OTP-Service/OTP-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parent-Proto/Parent-Proto.iml" filepath="$PROJECT_DIR$/Parent-Proto/Parent-Proto.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,114 @@
+server:
+  port: 5000
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: qmeetx-api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          default-filters:
+            - RemoveNonProxyHeaders=Server
+          routes:
+
+            #------AUTHENTICATION SERVICE-----
+            #------http://localhost:5006/
+            #---------------------------------
+            - id: auth-service-route
+              uri: http://localhost:5006/
+              predicates:
+                - Path=/api/auth/**
+              filters:
+                - StripPrefix=2
+              metadata:
+                description: "Forward api/auth/** requests to Authentication Service"
+
+            #------OTP SERVICE---------------
+            #------http://localhost:5001/
+            #---------------------------------
+            - id: otp-service-route
+              uri: http://localhost:5001/
+              predicates:
+                - Path=/otp/**
+              filters:
+                - StripPrefix=1
+
+              metadata:
+                description: "Forward otp/** requests to OTP Service"
+
+            #------User SERVICE---------------
+            #------http://localhost:5004/
+            #---------------------------------
+            - id: user-service-route
+              uri: http://localhost:5004/
+              predicates:
+                - Path=/user/**
+              filters:
+                - StripPrefix=1
+
+                - name: CircuitBreaker
+                  args:
+                    name: user-service
+                    fallbackUri: forward:/fallback/user
+              #--(--fallback--) user for clear message if user service is failed or slow
+              metadata:
+                description: "Forward user/** requests to User Service"
+
+  webflux:
+    base-path: /
+    timeout: 10s
+
+# ====================================
+# JWT Validation Configuration
+# ====================================
+jwt:
+ # auth-service-validate-url: http://localhost:5006/api/auth/validate
+  header: Authorization
+  prefix: Bearer
+
+
+
+
+  public-key-path: classpath:keys/public_key.pem
+  #---PUBLIC PATH THAT NO NEED AUTHENTICATION
+public-paths:
+  - /api/auth/**
+  - /docs/**
+  - /swagger-ui/**
+  - /health
+
+# ====================================
+# Logging & Performance
+# ====================================
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    reactor.netty.http.server: WARN
+    com.qmeetx.apigateway: INFO
+
+# ====================================
+# Retry & Circuit Breaker (optional)
+# ====================================
+resilience4j:
+  retry:
+    instances:
+      auth-service:
+        max-attempts: 3
+        wait-duration: 500ms
+      patient-service:
+        max-attempts: 3
+        wait-duration: 500ms
+  circuitbreaker:
+    instances:
+      auth-service:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+      patient-service:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s

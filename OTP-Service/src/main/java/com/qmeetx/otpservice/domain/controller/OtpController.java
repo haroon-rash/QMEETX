@@ -6,10 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/otp/")
 public class OtpController {
     private final OtpService otpService;
     public OtpController(OtpService otpService) {
@@ -18,7 +20,7 @@ public class OtpController {
 
     public static record OtpValidationRequest(String token , String otpCode){}
 
-    @PostMapping("/verify-otp")
+    @PostMapping("/verify")
     public Mono<ResponseEntity<String>> verifyOtp(@RequestBody OtpValidationRequest request) {
         String token = request.token();
         String otpCode = request.otpCode();

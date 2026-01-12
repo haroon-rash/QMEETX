@@ -8,19 +8,17 @@
     <parent>
         <groupId>com.qmeetx</groupId>
         <artifactId>qmeetx-backend</artifactId>
-        <version>1.0.0</version>
+        <version>4.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>QMEETX-Shared</artifactId>
-    <version>1.0.0</version>
     <name>QMEETX-Shared</name>
     <description>Shared module containing DTOs, Kafka events, and common constants for QMEETX</description>
 
     <properties>
-        <java.version>21</java.version>
         <lombok.version>1.18.30</lombok.version>
-        <spring.kafka.version>3.3.1</spring.kafka.version>
+        <spring.kafka.version>3.1.4</spring.kafka.version> <!-- Using compatible version with Boot 3.2.x -->
     </properties>
 
     <dependencies>
@@ -41,22 +39,15 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>${spring.kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- ✅ Fix added version for annotation processor -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
