@@ -1,0 +1,36 @@
+syntax = "proto3";
+package appointment.event;
+
+option java_package = "appointment.event";
+option java_multiple_files = true;
+
+message AppointmentEvent {
+  oneof event {
+      AppointmentBookedEvent booked = 1;
+      AppointmentCancelledEvent cancelled = 2;
+      AppointmentCheckedInEvent checkedIn = 3;
+  }
+}
+
+message AppointmentBookedEvent {
+  int64 appointmentId = 1;
+  int64 customerId = 2;
+  int64 slotId = 3;
+  int64 organizationId = 4;
+  string bookingTime = 5;
+}
+
+message AppointmentCancelledEvent {
+  int64 appointmentId = 1;
+  int64 customerId = 2;
+  string reason = 3;
+  string cancellationTime = 4;
+}
+
+message AppointmentCheckedInEvent {
+  int64 appointmentId = 1;
+  int64 customerId = 2;
+  int64 organizationId = 3;
+  int64 queueId = 4;
+  string checkInTime = 5;
+}

@@ -5,6 +5,6 @@ import com.qmeetx.userservice.domain.model.User;
 
 public interface KafkaUserConsumerService {
 
-     void consumeUserCreationEvent(UserCreationdto userCreationdto);
+     void consumeUserCreationEvent(byte[] message);
 
 }

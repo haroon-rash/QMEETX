@@ -49,13 +49,19 @@
         <dependency>
             <groupId>com.qmeetx</groupId>
             <artifactId>QMEETX-Shared</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 
             <!-- Reactive API Gateway (WebFlux-based) -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
             </dependency>
 
             <!-- WebFlux Core (WebClient, Reactive Infrastructure) -->
@@ -97,7 +103,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>annotationProcessor</scope>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
 

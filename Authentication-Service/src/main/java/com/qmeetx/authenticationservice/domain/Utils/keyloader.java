@@ -19,22 +19,33 @@ public class keyloader {
     @Value("${jwt.private-key-path}")
     private String privateKeyPath;
 
-    public PrivateKey loadKey() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException,Exception {
+    public PrivateKey loadKey() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, Exception {
+        String keyContent;
+        if (privateKeyPath != null && privateKeyPath.startsWith("classpath:")) {
+            String resourcePath = privateKeyPath.substring("classpath:".length());
+            if (!resourcePath.startsWith("/")) {
+                 resourcePath = "/" + resourcePath;
+            }
+            try (java.io.InputStream is = getClass().getResourceAsStream(resourcePath)) {
+                if (is == null) {
+                    throw new IOException("Resource not found: " + resourcePath);
+                }
+                keyContent = new String(is.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+            }
+        } else {
+            keyContent = Files.readString(Path.of(privateKeyPath));
+        }
 
-   String key= Files.readString(Path.of(privateKeyPath))
-           .replace("-----BEGIN PRIVATE KEY-----", "")
-           .replace("-----END PRIVATE KEY-----", "")
-           .replaceAll("\\s", "");
+        String key = keyContent
+                .replace("-----BEGIN PRIVATE KEY-----", "")
+                .replace("-----END PRIVATE KEY-----", "")
+                .replaceAll("\\s", "");
 
-   byte[] decode= Base64.getDecoder().decode(key);
-    PKCS8EncodedKeySpec spec= new PKCS8EncodedKeySpec(decode);
+        byte[] decode = Base64.getDecoder().decode(key);
+        PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(decode);
 
-    return KeyFactory.getInstance("RSA").generatePrivate(spec);
-
-
-
-
-}
+        return KeyFactory.getInstance("RSA").generatePrivate(spec);
+    }
 
 
 

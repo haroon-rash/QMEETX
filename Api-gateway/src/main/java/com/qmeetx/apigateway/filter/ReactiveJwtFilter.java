@@ -41,23 +41,29 @@ public class ReactiveJwtFilter implements WebFilter {
     public Mono<Void> filter( ServerWebExchange exchange, WebFilterChain chain) {
 
         String path = exchange.getRequest().getPath().toString();
-        List<String> publicPaths =jwtProperties.getPublicPaths();
-        boolean isPublic = publicPaths.stream().anyMatch(p -> matchesPath(p, path));
+        List<String> publicPaths = jwtProperties.getPublicPaths();
+        boolean isPublic = publicPaths != null && publicPaths.stream()
+                .filter(java.util.Objects::nonNull)
+                .anyMatch(p -> matchesPath(p.trim(), path));
         if (isPublic) {
             return chain.filter(exchange); // skip JWT
         }
         String token=exchange.getRequest().getHeaders().getFirst(headerName);
-        if(token==null|| !token.startsWith(prefix)){
-            return Mono.error( new jwtMissingException("Authorization header is missing or invalid"));
+        if(token==null || !token.startsWith(prefix)){
+            exchange.getResponse().setStatusCode(org.springframework.http.HttpStatus.UNAUTHORIZED);
+            return exchange.getResponse().setComplete();
         }
 
         String jwt =token.substring(prefix.length()).trim();
+        // System.out.println("Processing JWT: " + jwt);
         try {
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(publicKey)
                     .build()
                     .parseClaimsJws(jwt)
                     .getBody();
+
+            // System.out.println("Claims parsed successfully: " + claims);
 
             JwtUserPrincipal principal = new JwtUserPrincipal(
                     claims.get("id", String.class),
@@ -79,7 +85,7 @@ public class ReactiveJwtFilter implements WebFilter {
             ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
                     .header("X-Auth-Id", principal.auth_id())
                     .header("X-User-Email", principal.email())
-                    .header("X-User-Name", principal.name())
+                    .header("X-User-Name", principal.name() != null ? principal.name() : "")
                     .header("X-User-Role", principal.role())
                     .header("X-User-IsVerified", String.valueOf(principal.isVerified()))
                     .build();
@@ -91,15 +97,25 @@ public class ReactiveJwtFilter implements WebFilter {
             return chain.filter(mutatedExchange)
                     .contextWrite(ReactiveSecurityContextHolder.withAuthentication(auth));
         } catch (ExpiredJwtException e) {
+             System.err.println("JWT Expired: " + e.getMessage());
             return Mono.error(new JwtInvalidException("JWT token expired"));
         } catch (UnsupportedJwtException e) {
+             System.err.println("JWT Unsupported: " + e.getMessage());
             return Mono.error(new JwtInvalidException("Unsupported JWT token"));
         } catch (MalformedJwtException e) {
+             System.err.println("JWT Malformed: " + e.getMessage());
             return Mono.error(new JwtInvalidException("Malformed JWT token"));
         } catch (SignatureException e) {
+             System.err.println("JWT Signature Invalid: " + e.getMessage());
             return Mono.error(new JwtInvalidException("JWT signature is invalid"));
         } catch (IllegalArgumentException e) {
+             System.err.println("JWT IllegalArgument: " + e.getMessage());
+             e.printStackTrace();
             return Mono.error(new JwtInvalidException("JWT claims string is empty"));
+        } catch (Exception e) {
+             System.err.println("Unexpected error in JWT filter: " + e.getMessage());
+             e.printStackTrace();
+             return Mono.error(new JwtInvalidException("Internal Gateway Security Error"));
         }
 
 

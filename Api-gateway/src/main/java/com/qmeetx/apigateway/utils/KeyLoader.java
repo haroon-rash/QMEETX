@@ -20,18 +20,30 @@ public class KeyLoader {
     @Value("${jwt.public-key-path}")
     private String publicKeyPath;
 
-    public PublicKey loadKey() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException,Exception {
+    public PublicKey loadKey() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, Exception {
+        String path = publicKeyPath;
+        if (path.startsWith("classpath:")) {
+            path = path.substring(10);
+        }
+        // Ensure path starts with / for absolute classpath lookup
+        if (!path.startsWith("/")) {
+            path = "/" + path;
+        }
 
-        String key = Files.readString(Path.of(publicKeyPath))
-                .replace("-----BEGIN PUBLIC KEY-----", "")
-                .replace("-----END PUBLIC KEY-----", "")
-                .replaceAll("\\s", "");
+        try (var inputStream = getClass().getResourceAsStream(path)) {
+            if (inputStream == null) {
+                // Determine actual resource path for error message
+                throw new java.io.FileNotFoundException("Resource not found in classpath: " + path);
+            }
+            String key = new String(inputStream.readAllBytes())
+                    .replace("-----BEGIN PUBLIC KEY-----", "")
+                    .replace("-----END PUBLIC KEY-----", "")
+                    .replaceAll("\\s", "");
 
-        byte[] decode = Base64.getDecoder().decode(key);
-        X509EncodedKeySpec spec = new X509EncodedKeySpec(decode);
+            byte[] decode = Base64.getDecoder().decode(key);
+            X509EncodedKeySpec spec = new X509EncodedKeySpec(decode);
 
-        return KeyFactory.getInstance("RSA").generatePublic(spec);
-
-
+            return KeyFactory.getInstance("RSA").generatePublic(spec);
+        }
     }
     }

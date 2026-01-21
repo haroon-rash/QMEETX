@@ -36,13 +36,14 @@ public class GatewayExceptionHandler {
 
     }
     @ExceptionHandler(Exception.class)
-        public Mono<Void> handleGenericException(ServerWebExchange exchange, Exception ex) {
+    public Mono<Void> handleGenericException(ServerWebExchange exchange, Exception ex) {
+        ex.printStackTrace(); // Critical for debugging
         exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
         exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
         return exchange.getResponse()
                 .writeWith(Mono.just(exchange.getResponse()
                         .bufferFactory()
-                        .wrap(("{\"error\":\"Internal server error\"}").getBytes())));
+                        .wrap(("{\"error\":\"Internal server error: " + ex.getMessage() + "\"}").getBytes())));
     }
 
 

@@ -32,6 +32,7 @@ public OtpServiceImp(MailService mailService, RedisService redisService, EmailVe
     @Override
     public Mono<String> saveAndSendOtp(OtpData otpData) {
 String otp = OtpUtil.generateOtpCode();
+log.info("Generated OTP Code: {}", otp); // Debug logging
 otpData.setOtpCode(otp);
 
 return  redisService.saveData(otpData)

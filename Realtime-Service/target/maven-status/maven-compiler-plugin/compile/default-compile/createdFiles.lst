@@ -1,0 +1,3 @@
+com/qmeetx/realtimeservice/config/WebSocketConfig.class
+com/qmeetx/realtimeservice/consumer/QueueEventConsumer.class
+com/qmeetx/realtimeservice/RealtimeServiceApplication.class

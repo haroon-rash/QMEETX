@@ -6,7 +6,7 @@ import otp.event.EmailVerifiedEvent;
 
 public interface KafkaEmailVerifiedConsumer {
 
-public VerifiedDTO consumeVerifiedEvent(EmailVerifiedEvent event);
+public     void consumeVerifiedEvent(byte[] message);
 
 
 }

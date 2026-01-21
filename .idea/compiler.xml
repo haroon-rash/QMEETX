@@ -8,7 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="organization-Service" />
+        <module name="Queue-Service" />
         <module name="Authentication-Service" />
+        <module name="Appointment-Service" />
+        <module name="Realtime-Service" />
       </profile>
       <profile name="Annotation profile for qmeetx-backend" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -20,6 +23,7 @@
         <module name="Api-gateway" />
         <module name="OTP-Service" />
         <module name="QMEETX-Shared" />
+        <module name="Api-Gateway" />
         <module name="Parent-Proto" />
         <module name="User-Service" />
       </profile>
@@ -28,17 +32,23 @@
       <module name="Auth-Service" target="21" />
       <module name="demo" target="21" />
       <module name="Proto-Parents" target="21" />
+      <module name="QueueService" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Api-Gateway" options="-parameters" />
       <module name="Api-gateway" options="-parameters" />
+      <module name="Appointment-Service" options="-parameters" />
       <module name="Auth-Service" options="-parameters" />
       <module name="Authentication-Service" options="-parameters" />
       <module name="OTP-Service" options="-parameters" />
       <module name="Parent-Proto" options="-parameters" />
       <module name="Proto-Parents" options="" />
       <module name="QMEETX-Shared" options="-parameters" />
+      <module name="Queue-Service" options="-parameters" />
+      <module name="QueueService" options="-parameters" />
+      <module name="Realtime-Service" options="-parameters" />
       <module name="User-Service" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="organization-Service" options="-parameters" />

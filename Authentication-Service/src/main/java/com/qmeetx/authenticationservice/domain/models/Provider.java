@@ -4,12 +4,14 @@ package com.qmeetx.authenticationservice.domain.models;
 
 import com.qmeetx.authenticationservice.domain.enums.AuthProvider;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Provider {
 
 
@@ -27,7 +29,7 @@ public class Provider {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User user;
-
-
 }

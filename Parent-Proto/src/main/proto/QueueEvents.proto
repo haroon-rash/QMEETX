@@ -1,0 +1,34 @@
+syntax = "proto3";
+package queue.events;
+
+option java_package = "queue.events";
+option java_multiple_files = true;
+
+message QueueEvent {
+  oneof event {
+    QueueCreatedEvent queueCreated = 1;
+    TokenIssuedEvent tokenIssued = 2;
+    TokenStatusUpdatedEvent tokenStatusUpdated = 3;
+  }
+}
+
+message QueueCreatedEvent {
+  int64 queueId = 1;
+  string name = 2;
+  int64 organizationId = 3;
+  string createdAt = 4;
+}
+
+message TokenIssuedEvent {
+  int64 tokenId = 1;
+  int64 queueId = 2;
+  int64 tokenNumber = 3;
+  string issuedAt = 4;
+}
+
+message TokenStatusUpdatedEvent {
+  int64 tokenId = 1;
+  int64 queueId = 2;
+  string status = 3;
+  string updatedAt = 4;
+}

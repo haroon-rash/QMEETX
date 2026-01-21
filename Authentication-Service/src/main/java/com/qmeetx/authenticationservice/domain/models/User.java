@@ -3,9 +3,7 @@ package com.qmeetx.authenticationservice.domain.models;
 
 import com.qmeetx.authenticationservice.domain.enums.UserRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -48,6 +46,8 @@ public class User {
 
     // 🔑 one user can have multiple providers
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Provider> providers = new HashSet<>();
 }
 

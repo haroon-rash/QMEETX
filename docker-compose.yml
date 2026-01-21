@@ -1,0 +1,230 @@
+version: '3.8'
+
+services:
+  # --- Infrastructure ---
+  postgres:
+    image: postgres:15
+    container_name: qmeetx-postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root@1234
+      # Default DB (still needed for initial connection or valid check)
+      POSTGRES_DB: qmeetx_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Mount init script for multi-db creation
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - qmeetx-net
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U root -d qmeetx_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    container_name: qmeetx-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - qmeetx-net
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    container_name: qmeetx-kafka
+    ports:
+      - "9094:9092"
+    environment:
+      # KRaft Settings
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://qmeetx-kafka:29092,PLAINTEXT_HOST://localhost:9094
+      KAFKA_LISTENERS: PLAINTEXT://qmeetx-kafka:29092,CONTROLLER://qmeetx-kafka:29093,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@qmeetx-kafka:29093
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      CLUSTER_ID: 'ciWo7IWazngRchmPES6q5A=='
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    networks:
+      - qmeetx-net
+    healthcheck:
+      test: [ "CMD-SHELL", "kafka-topics --bootstrap-server qmeetx-kafka:29092 --list" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+
+  # --- Microservices ---
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Api-gateway/Dockerfile
+    container_name: api-gateway
+    ports:
+      - "5000:5003"
+    environment:
+      ORGANIZATION_SERVICE_URL: http://organization-service:8081
+      QUEUE_SERVICE_URL: http://queue-service:8082
+      APPOINTMENT_SERVICE_URL: http://appointment-service:8083
+      REALTIME_SERVICE_URL: http://realtime-service:8084
+      AUTH_SERVICE_URL: http://authentication-service:5006
+      USER_SERVICE_URL: http://user-service:5004
+      OTP_SERVICE_URL: http://otp-service:5001
+    networks:
+      - qmeetx-net
+
+  authentication-service:
+    build:
+      context: .
+      dockerfile: Authentication-Service/Dockerfile
+    container_name: authentication-service
+    ports:
+      - "5006:5006"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/auth_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+  user-service:
+    build:
+      context: .
+      dockerfile: User-Service/Dockerfile
+    container_name: user-service
+    ports:
+      - "5004:5004"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/user_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+  otp-service:
+    build:
+      context: .
+      dockerfile: OTP-Service/Dockerfile
+    container_name: otp-service
+    ports:
+      - "5001:5001"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/qmeetx_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+      SPRING_DATA_REDIS_HOST: redis
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+  organization-service:
+    build:
+      context: .
+      dockerfile: organization-Service/Dockerfile
+    container_name: organization-service
+    ports:
+      - "8081:8081"
+    environment:
+      # Database-per-Service: organization_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/organization_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+  queue-service:
+    build:
+      context: .
+      dockerfile: Queue-Service/Dockerfile
+    container_name: queue-service
+    ports:
+      - "8082:8082"
+    environment:
+      # Database-per-Service: queue_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/queue_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+      SPRING_DATA_REDIS_HOST: redis
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+  appointment-service:
+    build:
+      context: .
+      dockerfile: Appointment-Service/Dockerfile
+    container_name: appointment-service
+    ports:
+      - "8083:8083"
+    environment:
+      # Database-per-Service: appointment_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appointment_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+  realtime-service:
+    build:
+      context: .
+      dockerfile: Realtime-Service/Dockerfile
+    container_name: realtime-service
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+      - qmeetx-net
+
+volumes:
+  postgres_data:
+  kafka_data:
+
+
+networks:
+  qmeetx-net:
+    driver: bridge

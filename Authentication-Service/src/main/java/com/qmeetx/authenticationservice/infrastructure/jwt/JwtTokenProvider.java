@@ -42,7 +42,7 @@ private final PrivateKey privateKey;
     }
 
     //  Generate JWT
-    public String generateToken(String id,String email, boolean isVerified, String role) {
+    public String generateToken(String id,String email, String name, boolean isVerified, String role) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expirationTime);
 
@@ -50,6 +50,7 @@ private final PrivateKey privateKey;
                 .setSubject(email)
                 .addClaims(Map.of(
                         "id", id,
+                        "name", name != null ? name : "",
                         "isVerified", isVerified,
                         "role", role
 

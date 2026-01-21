@@ -1,0 +1,301 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.2)
+
+2026-01-14T01:47:42.026+05:00  INFO 100048 --- [Authentication-Service] [           main] c.q.a.AuthenticationServiceApplication   : Starting AuthenticationServiceApplication v4.0.1 using Java 21.0.9 with PID 100048 (/home/haroon/Desktop/QMEETX/Authentication-Service/target/Authentication-Service-4.0.1.jar started by haroon in /home/haroon/Desktop/QMEETX)
+2026-01-14T01:47:42.037+05:00  INFO 100048 --- [Authentication-Service] [           main] c.q.a.AuthenticationServiceApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T01:47:44.736+05:00  INFO 100048 --- [Authentication-Service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T01:47:44.867+05:00  INFO 100048 --- [Authentication-Service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118 ms. Found 2 JPA repository interfaces.
+2026-01-14T01:47:46.591+05:00  INFO 100048 --- [Authentication-Service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5006 (http)
+2026-01-14T01:47:46.625+05:00  INFO 100048 --- [Authentication-Service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T01:47:46.625+05:00  INFO 100048 --- [Authentication-Service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2026-01-14T01:47:46.719+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T01:47:46.723+05:00  INFO 100048 --- [Authentication-Service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4464 ms
+2026-01-14T01:47:47.365+05:00  INFO 100048 --- [Authentication-Service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T01:47:47.681+05:00  INFO 100048 --- [Authentication-Service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2026-01-14T01:47:47.831+05:00  INFO 100048 --- [Authentication-Service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-14T01:47:49.319+05:00  INFO 100048 --- [Authentication-Service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T01:47:49.444+05:00  INFO 100048 --- [Authentication-Service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-14T01:47:50.745+05:00  INFO 100048 --- [Authentication-Service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@45b96e4c
+2026-01-14T01:47:50.753+05:00  INFO 100048 --- [Authentication-Service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-14T01:47:50.902+05:00  WARN 100048 --- [Authentication-Service] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-14T01:47:54.009+05:00  INFO 100048 --- [Authentication-Service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-14T01:47:54.141+05:00  INFO 100048 --- [Authentication-Service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T01:47:55.406+05:00  WARN 100048 --- [Authentication-Service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T01:47:57.045+05:00  INFO 100048 --- [Authentication-Service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5006 (http) with context path '/'
+2026-01-14T01:47:57.117+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9094]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-auth-service-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = auth-service-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+2026-01-14T01:47:57.200+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-01-14T01:47:57.549+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.7.1
+2026-01-14T01:47:57.549+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: e2494e6ffb89f828
+2026-01-14T01:47:57.549+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1768337277547
+2026-01-14T01:47:57.555+05:00  INFO 100048 --- [Authentication-Service] [           main] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Subscribed to topic(s): email-verified-topic
+2026-01-14T01:47:57.583+05:00  INFO 100048 --- [Authentication-Service] [           main] c.q.a.AuthenticationServiceApplication   : Started AuthenticationServiceApplication in 17.368 seconds (process running for 19.083)
+2026-01-14T01:47:58.194+05:00  WARN 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Error while fetching metadata with correlation id 2 : {email-verified-topic=UNKNOWN_TOPIC_OR_PARTITION}
+2026-01-14T01:47:58.196+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Cluster ID: ciWo7IWazngRchmPES6q5A
+2026-01-14T01:47:58.381+05:00  WARN 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Error while fetching metadata with correlation id 5 : {email-verified-topic=UNKNOWN_TOPIC_OR_PARTITION}
+2026-01-14T01:47:59.044+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.048+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:47:59.099+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.100+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.100+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:47:59.101+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:47:59.120+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.120+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.120+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.244+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.246+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:47:59.247+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:47:59.265+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.265+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.265+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:47:59.265+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:47:59.280+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.280+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.280+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.415+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.419+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:47:59.421+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:47:59.466+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.468+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.468+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:47:59.468+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:47:59.483+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.483+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.483+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.631+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.633+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:47:59.639+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:47:59.705+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.705+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.705+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:47:59.705+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:47:59.723+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.727+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.727+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.829+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.835+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:47:59.841+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:47:59.874+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.875+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.876+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:47:59.877+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:47:59.898+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:47:59.898+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:47:59.898+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.005+05:00  INFO 100048 --- [Authentication-Service] [nio-5006-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-14T01:48:00.005+05:00  INFO 100048 --- [Authentication-Service] [nio-5006-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-14T01:48:00.009+05:00  INFO 100048 --- [Authentication-Service] [nio-5006-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-14T01:48:00.023+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.025+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:00.025+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:00.045+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.045+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.045+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:00.045+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:00.058+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.058+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.058+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.157+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.158+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:00.163+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:00.205+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.206+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.206+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:00.207+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:00.220+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.221+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.222+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.370+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.371+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:00.376+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:00.401+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.401+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.401+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:00.401+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:00.415+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.419+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.419+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.513+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.516+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:00.525+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:00.553+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.558+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.558+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:00.560+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:00.584+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.584+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:00.586+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.737+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:00.742+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:00.751+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+Hibernate: select u1_0.user_id,u1_0.created_at,u1_0.user_email,u1_0.is_varified,u1_0.user_name,u1_0.user_password,u1_0.role from signup_user u1_0 where u1_0.user_email is null
+2026-01-14T01:48:01.011+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.013+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.013+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:01.015+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:01.059+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.059+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.059+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.176+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.177+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:01.179+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:01.194+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.195+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.195+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:01.196+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:01.210+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.211+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.211+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.325+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.328+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:01.330+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:01.348+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.348+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.348+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:01.352+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:01.366+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.366+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.367+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.500+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.501+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:01.505+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:01.541+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.541+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.541+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] JoinGroup failed: This is not the correct coordinator. Marking coordinator unknown. Sent generation was Generation{generationId=-1, memberId='', protocol='null'}
+2026-01-14T01:48:01.545+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Client requested disconnect from node 2147483646
+2026-01-14T01:48:01.564+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.564+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Group coordinator localhost:9094 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-01-14T01:48:01.564+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Requesting disconnect from last known coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.682+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Discovered group coordinator localhost:9094 (id: 2147483646 rack: null)
+2026-01-14T01:48:01.686+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: rebalance failed due to 'This is not the correct coordinator.' (NotCoordinatorException)
+2026-01-14T01:48:01.690+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:01.758+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: need to re-join with the given member-id: consumer-auth-service-group-1-bc61fa05-a0ae-4252-9ee1-e723780397f7
+2026-01-14T01:48:01.759+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] (Re-)joining group
+2026-01-14T01:48:04.827+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Successfully joined group with generation Generation{generationId=1, memberId='consumer-auth-service-group-1-bc61fa05-a0ae-4252-9ee1-e723780397f7', protocol='range'}
+2026-01-14T01:48:04.849+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Finished assignment for group at generation 1: {consumer-auth-service-group-1-bc61fa05-a0ae-4252-9ee1-e723780397f7=Assignment(partitions=[email-verified-topic-0])}
+2026-01-14T01:48:04.909+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Successfully synced group in generation Generation{generationId=1, memberId='consumer-auth-service-group-1-bc61fa05-a0ae-4252-9ee1-e723780397f7', protocol='range'}
+2026-01-14T01:48:04.910+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Notifying assignor about the new Assignment(partitions=[email-verified-topic-0])
+2026-01-14T01:48:04.912+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Adding newly assigned partitions: email-verified-topic-0
+2026-01-14T01:48:04.942+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Found no committed offset for partition email-verified-topic-0
+2026-01-14T01:48:04.973+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Resetting offset for partition email-verified-topic-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9094 (id: 1 rack: null)], epoch=0}}.
+2026-01-14T01:48:04.975+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : auth-service-group: partitions assigned: [email-verified-topic-0]
+2026-01-14T01:48:22.442+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Revoke previously assigned partitions email-verified-topic-0
+2026-01-14T01:48:22.443+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : auth-service-group: partitions revoked: [email-verified-topic-0]
+2026-01-14T01:48:22.444+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Member consumer-auth-service-group-1-bc61fa05-a0ae-4252-9ee1-e723780397f7 sending LeaveGroup request to coordinator localhost:9094 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-01-14T01:48:22.446+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-01-14T01:48:22.446+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-01-14T01:48:22.446+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Unsubscribed all topics or patterns and assigned partitions
+2026-01-14T01:48:22.449+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-01-14T01:48:22.450+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-auth-service-group-1, groupId=auth-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-01-14T01:48:22.503+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-01-14T01:48:22.503+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-01-14T01:48:22.503+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-01-14T01:48:22.503+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-01-14T01:48:22.535+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-auth-service-group-1 unregistered
+2026-01-14T01:48:22.536+05:00  INFO 100048 --- [Authentication-Service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : auth-service-group: Consumer stopped
+2026-01-14T01:48:22.558+05:00  INFO 100048 --- [Authentication-Service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T01:48:22.562+05:00  INFO 100048 --- [Authentication-Service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-14T01:48:22.575+05:00  INFO 100048 --- [Authentication-Service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

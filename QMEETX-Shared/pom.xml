@@ -18,7 +18,7 @@
 
     <properties>
         <lombok.version>1.18.30</lombok.version>
-        <spring.kafka.version>3.1.4</spring.kafka.version> <!-- Using compatible version with Boot 3.2.x -->
+
     </properties>
 
     <dependencies>
@@ -62,6 +62,13 @@
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>

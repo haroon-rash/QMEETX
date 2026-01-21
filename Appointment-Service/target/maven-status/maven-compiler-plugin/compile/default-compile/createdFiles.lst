@@ -1,0 +1,13 @@
+com/qmeetx/appointmentservice/infrastructure/AppointmentEventProducer.class
+com/qmeetx/appointmentservice/domain/AppointmentSlot$AppointmentSlotBuilder.class
+com/qmeetx/appointmentservice/AppointmentServiceApplication.class
+com/qmeetx/appointmentservice/api/DataSeederController.class
+com/qmeetx/appointmentservice/domain/AppointmentSlot.class
+com/qmeetx/appointmentservice/config/KafkaTopicConfig.class
+com/qmeetx/appointmentservice/infrastructure/AppointmentRepository.class
+com/qmeetx/appointmentservice/domain/Appointment.class
+com/qmeetx/appointmentservice/infrastructure/AppointmentSlotRepository.class
+com/qmeetx/appointmentservice/domain/AppointmentStatus.class
+com/qmeetx/appointmentservice/domain/Appointment$AppointmentBuilder.class
+com/qmeetx/appointmentservice/application/AppointmentService.class
+com/qmeetx/appointmentservice/api/AppointmentController.class

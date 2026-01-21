@@ -37,7 +37,7 @@ private final PasswordEncoder passwordEncoder;
      }
 
 
-     return jwtTokenProvider.generateToken(user.getId().toString(),user.getEmail(),user.isVarified(), UserRole.OWNER.name());
+     return jwtTokenProvider.generateToken(user.getId().toString(),user.getEmail(),user.getName(),user.isVarified(), UserRole.OWNER.name());
 
 
     }

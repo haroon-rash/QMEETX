@@ -1,0 +1,12 @@
+syntax = "proto3";
+package organization.event;
+
+option java_package = "organization.event";
+option java_multiple_files = true;
+
+message OrganizationCreatedEvent {
+  int64 organizationId = 1;
+  string name = 2;
+  string code = 3;
+  string createdAt = 4;
+}

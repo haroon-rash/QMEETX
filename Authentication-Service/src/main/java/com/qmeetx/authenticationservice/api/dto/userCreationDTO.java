@@ -12,7 +12,7 @@ public class userCreationDTO {
     private String email;
     private String role;
     private Boolean isVerified;
-    private String source= EventSource.Auth_Service.name();
+    private String source= EventSource.AUTH.name();
 
 
 }

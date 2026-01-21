@@ -1,7 +1,7 @@
 package com.qmeetx.authenticationservice.application.KafkaService;
 
 import com.qmeetx.authenticationservice.api.dto.userCreationDTO;
-import com.qmeetx.qmeetxshared.Topics.KafkaTopics;
+import com.qmeetx.qmeetxshared.topics.KafkaTopics;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import userCreation.events.UserCreation;
