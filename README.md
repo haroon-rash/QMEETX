@@ -8,16 +8,16 @@ The system integrates **API Gateway**, **auth & OTP services**, **shared modules
 ---
 
 ## Current Progress
-| Module / Section        | Status          |
+| Module / Section        | Status         |
 |-------------------------|----------------|
-| Booking Section         | In Progress    |
-| Queue Section           | In Progress    |
+| Booking Section         | Completed      |
+| Queue Section           | Completed      |
 | Auth Service            | Completed      |
 | OTP Service             | Completed      |
 | User Service            | Completed      |
 | API Gateway             | Completed      |
 | QmeetShared             | Completed      |
-
+|RealTime                 |Completed       | 
 ---
 
 ## Core Modules / Microservices
