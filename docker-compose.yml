@@ -6,8 +6,8 @@ services:
     image: postgres:15
     container_name: qmeetx-postgres
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root@1234
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_PASSWORD: ${PASSOWRD}
       # Default DB (still needed for initial connection or valid check)
       POSTGRES_DB: qmeetx_db
     ports:
@@ -87,8 +87,8 @@ services:
       - "5006:5006"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/auth_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_DATASOURCE_USERNAME: ${USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${PASSOWRD}
       SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
     depends_on:
       postgres:
@@ -107,8 +107,8 @@ services:
       - "5004:5004"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/user_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_DATASOURCE_USERNAME: 
+      SPRING_DATASOURCE_PASSWORD: 
       SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
     depends_on:
       postgres:
@@ -127,8 +127,8 @@ services:
       - "5001:5001"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/qmeetx_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_DATASOURCE_USERNAME: 
+      SPRING_DATASOURCE_PASSWORD: 
       SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
       SPRING_DATA_REDIS_HOST: redis
     depends_on:
@@ -149,8 +149,8 @@ services:
     environment:
       # Database-per-Service: organization_db
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/organization_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_DATASOURCE_USERNAME: 
+      SPRING_DATASOURCE_PASSWORD: 
       SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
     depends_on:
       postgres:
@@ -170,8 +170,8 @@ services:
     environment:
       # Database-per-Service: queue_db
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/queue_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_DATASOURCE_USERNAME: 
+      SPRING_DATASOURCE_PASSWORD: 
       SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
       SPRING_DATA_REDIS_HOST: redis
     depends_on:
@@ -194,8 +194,8 @@ services:
     environment:
       # Database-per-Service: appointment_db
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appointment_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root@1234
+      SPRING_DATASOURCE_USERNAME:
+      SPRING_DATASOURCE_PASSWORD: 
       SPRING_KAFKA_BOOTSTRAP_SERVERS: qmeetx-kafka:29092
     depends_on:
       postgres:
