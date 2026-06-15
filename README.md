@@ -1,7 +1,7 @@
 
 # QMEETX
 
-**QMEETX** is a multi-tenant SaaS platform for managing **appointments, bookings, and queues** for businesses like hospitals, salons, car washes, and more. It is built on a **Java Spring Boot microservices architecture**, designed for **scalability, real-time updates, and production readiness**.
+**QMEETX** is aSaaS platform for managing **appointments, bookings, and queues** for businesses like hospitals, salons, car washes, and more. It is built on a **Java Spring Boot microservices architecture**, designed for **scalability, real-time updates, and production readiness**.
 
 The system integrates **API Gateway**, **auth & OTP services**, **shared modules**, and supports asynchronous microservices communication for high performance.
 
